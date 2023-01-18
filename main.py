@@ -21,7 +21,7 @@ calculator = Calculator()
 
 
 # Build our UI ----
-# Labels: 'Result' and '0' (initial value)
+# Labels: "" (initial value)
 with ui.row():
     ui.label().bind_text(calculator, "display").style(
         "text-align: right;"
