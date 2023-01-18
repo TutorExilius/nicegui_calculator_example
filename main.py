@@ -62,4 +62,4 @@ with ui.row():
 
 
 # Run NiceGUI App
-ui.run()
+ui.run(host="127.0.0.1")
