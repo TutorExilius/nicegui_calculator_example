@@ -24,7 +24,11 @@ calculator = Calculator()
 # Labels: 'Result' and '0' (initial value)
 with ui.row():
     ui.label().bind_text(calculator, "display").style(
-        "text-align: right; padding: 2px 8px; height: 30px; width: 210px; border: 1px solid black;"
+        "text-align: right;"
+        "padding: 2px 8px;"
+        "height: 30px;"
+        "width: 210px;"
+        "border: 1px solid black;"
     )
 
 # Buttons: '1' , '2', '3' and '+'
