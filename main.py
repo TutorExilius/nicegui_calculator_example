@@ -6,7 +6,7 @@ class Calculator:
         self.display = ""
 
     def calculate(self):
-        self.display = eval(self.display)
+        self.display = str(eval(self.display))
 
     def clear(self):
         self.display = ""
