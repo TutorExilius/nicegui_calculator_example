@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "nicegui-calculator-example"
+version = "0.1.0"
+description = ""
+authors = ["Tutor Exilius <tutorexilius@gmail.com>"]
+readme = "README.md"
+packages = [{include = "nicegui_calculator_example"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+nicegui = "^1.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
