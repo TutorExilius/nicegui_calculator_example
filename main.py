@@ -3,72 +3,16 @@ from nicegui import ui
 # Calculator Logic ---
 class Calculator:
     def __init__(self):
-        self.output = "0"
-        self.operators = []
-        self.operands = []
+        self.output = ""
 
     def calculate(self):
-        self.parse_input()
-
-        while len(self.operands) > 1:
-            operand_1 = int(self.operands.pop(0))
-            operand_2 = int(self.operands.pop(0))
-            operator = self.operators.pop(0)
-
-            if operator == "+":
-                result = operand_1 + operand_2
-            elif operator == "-":
-                result = operand_1 - operand_2
-            elif operator == "*":
-                result = operand_1 * operand_2
-            elif operator == "/":
-                result = operand_1 / operand_2
-
-            self.operands.insert(0, str(result))
-
-        self.output = self.operands[0]
-        self.operands.clear()
-
-    def parse_input(self):
-        output_entries = list(self.output)
-
-        while output_entries:
-            char = output_entries.pop(0)
-
-            if char in ["+", "-", "*", "/"]:
-                self.operators.append(char)
-            else:
-                result = self.collect_whole_number(output_entries)
-
-                if result is not None:
-                    number_input = char + result
-                else:
-                    number_input = char
-
-                self.operands.append(number_input)
-
-    def collect_whole_number(self, output_entries):
-        one_number = ""
-
-        while output_entries:
-            char = output_entries.pop(0)
-
-            if char.isdigit():
-                one_number = one_number + char
-            else:
-                output_entries.insert(0, char)
-                return one_number
+        self.output = eval(self.output)
 
     def clear(self):
-        self.output = "0"
-        self.operators.clear()
-        self.operands.clear()
+        self.output = ""
 
     def append_input(self, event):
-        if self.output == "0":
-            self.output = event.sender.text
-        else:
-            self.output = self.output + event.sender.text
+        self.output = self.output + event.sender.text
 # ---
 
 
@@ -79,8 +23,9 @@ calculator = Calculator()
 # Build our UI ----
 # Labels: 'Result' and '0' (initial value)
 with ui.row():
-    ui.label("Result:")
-    ui.label().bind_text(calculator, "output")
+    ui.label().bind_text(calculator, "output").style(
+        "text-align: right; padding: 2px 8px; height: 30px; width: 210px; border: 1px solid black;"
+    )
 
 # Buttons: '1' , '2', '3' and '+'
 with ui.row():
