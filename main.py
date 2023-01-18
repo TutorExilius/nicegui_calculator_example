@@ -3,16 +3,16 @@ from nicegui import ui
 # Calculator Logic ---
 class Calculator:
     def __init__(self):
-        self.output = ""
+        self.display = ""
 
     def calculate(self):
-        self.output = eval(self.output)
+        self.display = eval(self.display)
 
     def clear(self):
-        self.output = ""
+        self.display = ""
 
     def append_input(self, event):
-        self.output = self.output + event.sender.text
+        self.display = self.display + event.sender.text
 # ---
 
 
@@ -23,7 +23,7 @@ calculator = Calculator()
 # Build our UI ----
 # Labels: 'Result' and '0' (initial value)
 with ui.row():
-    ui.label().bind_text(calculator, "output").style(
+    ui.label().bind_text(calculator, "display").style(
         "text-align: right; padding: 2px 8px; height: 30px; width: 210px; border: 1px solid black;"
     )
 
